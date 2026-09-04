@@ -3,7 +3,8 @@ const http=require("http");//ye khud ka http module hota hai isse ek server bnay
 const fs=require("fs");
 const url=require("url");
 
-const myServer=http.createServer((req,res)=>{
+function myHandler(req,res){
+    const myServer=http.createServer((req,res)=>{
     if(req.url==="/favicon.ico")return res.end();
     const log=`${Date.now()}: ${req.url}new req recieved\n`;
     const myUrl=url.parse(req.url,true);
@@ -25,6 +26,10 @@ const myServer=http.createServer((req,res)=>{
     //console.log(req.headers);
     
 });
+}
+const myServer=http.createServer(myHandler);
+
+
 myServer.listen(8000,()=>console.log("server started!"));
 
 //hmne ek web server http module se
