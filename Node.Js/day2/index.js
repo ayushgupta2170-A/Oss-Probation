@@ -6,7 +6,13 @@ const express=require("express");
 
 const app=express();
 
-app.get
+app.get("/",(req,res)=>{
+    return res.send("hello from home page");
+});
+
+app.get("/about",(req,res)=>{
+    return res.send("hello from aboutpage");
+});
 
 function myHandler(req,res){
     const myServer=http.createServer((req,res)=>{
@@ -32,7 +38,7 @@ function myHandler(req,res){
     
 });
 }
-const myServer=http.createServer(myHandler);
+const myServer=http.createServer(app);
 
 
 myServer.listen(8000,()=>console.log("server started!"));
