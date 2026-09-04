@@ -8,11 +8,15 @@ const myServer=http.createServer((req,res)=>{
     const log=`${Date.now()}: ${req.url}new req recieved\n`;
     const myUrl=url.parse(req.url,true);
     console.log(myUrl);
+
     fs.appendFile("log.txt",log,(err,data)=>{
         switch(myUrl.pathname){
-            case'/':res.end("homepage");
+            case'/':
+        if(req.method==="GET")res.end("homepage");
             break;
-            case '/about':res.end("i am ayush");
+            case '/about':
+            const username=myUrl.query.myname;
+            res.end(`Hi ,${userName}`);
             break;
             default:res.end("404 not found");
         }
