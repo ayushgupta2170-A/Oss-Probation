@@ -11,7 +11,7 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/about",(req,res)=>{
-    return res.send("hello from aboutpage");
+    return res.send("hello from aboutpage"+"hey"+req.query.name);
 });
 
 function myHandler(req,res){
