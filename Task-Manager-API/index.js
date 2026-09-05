@@ -16,8 +16,8 @@ app.get("/tasks",(req,res)=>{
             return res.status(500).json({error:"unable to read tasks"});
         }
         //json mein krke response bhejna hai'
-        const tasks=JSON.parse(data);
-        return res.status(200).json(tasks);
+        const tasks=JSON.parse(data);//json ko array object bnana hai
+        return res.json(tasks);
     });
 });
 
