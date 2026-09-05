@@ -9,21 +9,25 @@ app.get("/api/users",(req,res)=>{
     return res.json(users);
 });
 
+
 app.get("/users",(req,res)=>{
     /*      aisa kuch hota hai html tag
        <ul>
           <li>ayush gupta</li>
     */ 
-   
-          
-     const html =`
+    const html =`
     <ul>
      ${users.map((user)=>`<li>${user.first_name}</li>`)}
     </ul>
      `;
      res.send(html);
-      
-    
 });
+
+app.get("/api/users/:id",(req,res)=>{
+    const id=Number(req.params.id);
+    const user=users.find((user)=>user.id===id);
+    return  res.json(user);
+});
+
 
 app.listen(PORT,()=>console.log(`server started at port ${PORT} `))
