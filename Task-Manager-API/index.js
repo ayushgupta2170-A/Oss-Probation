@@ -21,6 +21,7 @@ app.get("/tasks",(req,res)=>{
     });
 });
 
+         //single task
 app.get("/tasks/:id",(req,res)=>{
     fs.readFile("tasks.json","utf-8",(err,data)=>{
         if(err)return res.status(500).json({error:"Error"});
