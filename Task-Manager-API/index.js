@@ -28,7 +28,8 @@ app.get("/tasks/:id",(req,res)=>{
         const id=Number(req.params.id);
 
         const task=tasks.find(t=>t.id===id);//ye vali line task find krne ke liye hai
-        
+        //ab dekhenge ki task mila ya nhi
+        if(!task)return res.status(404).json({error:"task not found"});
     });
 });
 
