@@ -45,20 +45,14 @@ app
 });
 
 
-app.patch("/api/users/:id",(req,res)=>{
-    //todo :edit the user with id
-    return  res.json({status:"pending"});
-});
+
 
 app.post("/api/users",(req,res)=>{
     //todo :create
     return  res.json({status:"pending"});
 });
 
-app.delete("/api/users/:id",(req,res)=>{
-    //todo :delete the user with id
-    return  res.json({status:"pending"});
-});
+
 
 
 
