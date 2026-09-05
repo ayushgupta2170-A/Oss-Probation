@@ -21,5 +21,14 @@ app.get("/tasks",(req,res)=>{
     });
 });
 
+app.get("/tasks/:id",(req,res)=>{
+    fs.readFile("tasks.json","utf-8",(err,data)=>{
+        if(err)return res.status(500).json({error:"Error"});
+        const tasks=JSON.parse(data);
+    })
+})
+
+
+
 
 
