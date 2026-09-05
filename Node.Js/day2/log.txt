@@ -1,5 +1,5 @@
 //version
 5.2.1
 first part->5
-second part->2
+second part->2  thoda sa mjor bug jo sahi hua hai,usme updatehi krna chahiye,ya koi nya chota fetaure add kiya hai(bde update ke liye)
 third->1 ye minor fixes(optional)isse koi farak nhi pdta agr update hi bhi krte ho,minor updates
