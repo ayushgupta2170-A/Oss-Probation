@@ -36,7 +36,9 @@ app.get("/tasks/:id",(req,res)=>{
     });
 });
 
-app.post("/tasks",)
+app.post("/tasks",(req,res)=>{
+    const{title,completed}=req.body;
+});
 
 
 
