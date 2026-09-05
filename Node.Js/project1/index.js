@@ -1,5 +1,6 @@
 const express=require("express");
 const users=require("./MOCK_DATA.json");
+const fs=require("fs");
 
 const app=express();
 const PORT=8000;
@@ -49,6 +50,9 @@ app
 
 app.post("/api/users",(req,res)=>{
     //todo :create
+    const body=req.body;
+    users.push(body);
+    fs.writeFile('./')
     return  res.json({status:"pending"});
 });
 
