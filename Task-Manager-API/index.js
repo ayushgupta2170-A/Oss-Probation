@@ -26,6 +26,9 @@ app.get("/tasks/:id",(req,res)=>{
         if(err)return res.status(500).json({error:"Error"});
         const tasks=JSON.parse(data);
         const id=Number(req.params.id);
+
+        const task=tasks.find(t=>t.id===id);//ye vali line task find krne ke liye hai
+        
     });
 });
 
