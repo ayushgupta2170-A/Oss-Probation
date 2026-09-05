@@ -5,5 +5,8 @@ const app=express();
 const PORT=8000;
 
 //Routes
+app.get("/users",(req,res)=>{
+    return res.json(users);
+});
 
 app.listen(PORT,()=>console.log(`server started at port `))
