@@ -10,5 +10,13 @@ app.listen(PORT,()=>{
 })
 
 app.get("/tasks",(req,res)=>{
-
+    fs.readFile("tasks.json","utf-8",(err,data)=>{
+        //ab error handling krenge
+        if(err){
+            return res.status(500).json({error:"unable to read tasks"});
+        }
+    });
 });
+
+
+
