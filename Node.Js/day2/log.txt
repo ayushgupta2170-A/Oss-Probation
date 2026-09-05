@@ -6,3 +6,6 @@ third->1 ye minor fixes(optional)isse koi farak nhi pdta agr update hi bhi krte 
 
 ^5.2.1-->5 ko lock krdo
 ^->iska mtlb version 5 hi rhna chahiye uske aage ka change ho skta hai like 6 nhi hona chahiye
+^->install all recommended and minor fixes automaticaly
+
+~-->last digits ko change krta hai like 5.2.3, 5.2.1, 5.2.7,etc
