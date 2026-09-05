@@ -5,6 +5,10 @@ const fs=require("fs");
 const app=express();
 const PORT=8000;
 
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 //Routes
 app.get("/api/users",(req,res)=>{
     return res.json(users);
