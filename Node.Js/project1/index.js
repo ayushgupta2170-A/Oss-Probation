@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-app.get("/api/users",(req,res)=>{
+app.patch("/api/users",(req,res)=>{
     return res.json(users);
 });
 
