@@ -36,6 +36,8 @@ app.get("/tasks/:id",(req,res)=>{
     });
 });
 
+app.post("/tasks",)
+
 
 
 
