@@ -36,11 +36,72 @@ app.get("/tasks/:id",(req,res)=>{
     });
 });
 
-app.post("/tasks",(req,res)=>{
-    const{title,completed}=req.body;
+app.post("/tasks", (req, res) => {
+    const tasks = getTasks();
+    const { title, completed } = req.body;
+
+    if (!title||title.trim()==="")
+        return res.status(400).json({ message: "Title is required" });
+
+    const newTask = {
+        id: tasks.length ? tasks[tasks.length-1].id+1:1,
+        title: title,
+        completed: completed===true
+    };
+
+    tasks.push(newTask);
+    saveTasks(tasks);
+
+    res.status(201).json({
+        message: "Task created successfully",
+        task: newTask
+    });
+});
+    //update task ke liye
+app.put("/tasks/:id", (req, res) =>{
+    const tasks = getTasks();
+    const id = Number(req.params.id);
+    const index = tasks.findIndex(t => t.id === id);
+
+    if (index===-1)
+        return res.status(404).json({ message: "Task not found" });
+
+    const {title,completed}=req.body;
+
+    if (!title||title.trim()=== "")
+        return res.status(400).json({ message: "Title is required" });
+
+    tasks[index].title = title;
+
+    if (typeof completed==="boolean")
+        tasks[index].completed = completed;
+
+    saveTasks(tasks);
+
+    res.status(200).json({
+        message: "Task updated successfully",
+        task: tasks[index]
+    });
+});
+     //delete krne ke liye
+app.delete("/tasks/:id",(req, res) => {
+    const tasks = getTasks();
+    const id = Number(req.params.id);
+    const index = tasks.findIndex(t => t.id === id);
+
+    if (index===-1)
+        return res.status(404).json({ message: "Task not found" });
+
+    const deletedTask = tasks.splice(index, 1)[0];
+    saveTasks(tasks);
+
+    res.status(200).json({
+        message: "Task deleted successfully",
+        task: deletedTask
+    });
 });
 
-
-
-
-
+//server start krne ke liye
+app.listen(PORT,()=>{
+    console.log(`Server started at http://localhost:${PORT}`);
+});
