@@ -5,4 +5,4 @@ const httpServer=http.createServer(async function(req,res){});//http servr creat
 
 httpServer.listen(PORT,()=>{
     console.log(`Server is running on http://localhost:${PORT}`);
-});
+}); 
