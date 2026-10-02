@@ -20,6 +20,7 @@ let init = async () => {
 
     await createOffer();
 }
+init();
 let createOffer=async ()=>{
     peerConnection=new RTCPeerConnection(servers);
 
