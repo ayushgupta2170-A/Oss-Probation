@@ -29,7 +29,7 @@ let createOffer=async ()=>{
 
     peerConnection.ontrack=(event)=>{
         event.streams[0].getTracks().forEach((track)=>{
-            remoteStream.addTrack()
+            remoteStream.addTrack(track)
         })
     }
 
