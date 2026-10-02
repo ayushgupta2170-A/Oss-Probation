@@ -20,11 +20,11 @@ let init=async()=>{
 let createOffer=async ()=>{
     peerConnection=new RTCPeerConnection(servers);
 
-    remoteStream=newMidStream();
+    remoteStream=new MediaStream();
     document.getElementById('user-2').srcObject=remoteStream
 
     localStream.getTracks().forEach((track)=>{
-        peerConnection.track(track,localStream)
+        peerConnection.addTrack(track,localStream)
     })
 
     peerConnection.ontrack=(event)=>{
