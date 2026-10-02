@@ -11,12 +11,26 @@ const servers={
 
 }
 
-let init=async()=>{
+/*let init=async()=>{
     localStream = await navigator.mediaDevices.getUserMedia({video:true,audio:false});
     document.getElementById('user-1').srcObject=localStream
 
     await createOffer();
+}*/
+let init = async () => {
+    console.log("INIT CHAL RAHA HAI");
+
+    localStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false
+    });
+
+    console.log("CAMERA MIL GAYA");
+
+    document.getElementById('user-1').srcObject = localStream;
 }
+
+init();
 let createOffer=async ()=>{
     peerConnection=new RTCPeerConnection(servers);
 
