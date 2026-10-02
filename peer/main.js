@@ -3,9 +3,12 @@ let remoteStream;
 let peerConnection;
 
 const servers={
-    iceServers:[{
-        urls:[]
-    }]
+    iceServers:[
+    {
+        urls:['stun:stun1.l.google.com:19302','stun:stun2.1.google.com:19302']
+    }
+  ]
+
 }
 
 let init=async()=>{
@@ -19,6 +22,16 @@ let createOffer=async ()=>{
 
     remoteStream=newMidStream();
     document.getElementById('user-2').srcObject=remoteStream
+
+    localStream.getTracks().forEach((track)=>{
+        peerConnection.track(track,localStream)
+    })
+
+    peerConnection.ontrack=(event)=>{
+        event.streams[0].getTracks().forEach((track)=>{
+            remoteStream.addTrack()
+        })
+    }
 
     let offer=await peerConnection.createOffer()
     await peerConnection.setLocalDescription(offer)
