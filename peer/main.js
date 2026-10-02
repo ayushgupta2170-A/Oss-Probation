@@ -15,7 +15,7 @@ let init=async()=>{
     localStream = await navigator.mediaDevices.getUserMedia({video:true,audio:false})
     document.getElementById('user-1').srcObject=localStream
 
-    createOffer();
+    await createOffer();
 }
 let createOffer=async ()=>{
     peerConnection=new RTCPeerConnection(servers);
