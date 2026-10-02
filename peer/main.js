@@ -12,7 +12,7 @@ const servers={
 }
 
 let init=async()=>{
-    localStream = await navigator.mediaDevices.getUserMedia({video:true,audio:false})
+    localStream = await navigator.mediaDevices.getUserMedia({video:true,audio:false});
     document.getElementById('user-1').srcObject=localStream
 
     await createOffer();
@@ -21,10 +21,10 @@ let createOffer=async ()=>{
     peerConnection=new RTCPeerConnection(servers);
 
     remoteStream=new MediaStream();
-    document.getElementById('user-2').srcObject=remoteStream
+    document.getElementById('user-2').srcObject=remoteStream;
 
     localStream.getTracks().forEach((track)=>{
-        peerConnection.addTrack(track,localStream)
+        peerConnection.addTrack(track,localStream);
     });
 
     peerConnection.ontrack=(event)=>{
@@ -35,12 +35,12 @@ let createOffer=async ()=>{
 
     peerConnection.onicecandidate=async(event)=>{
         if(event.candidate){
-            console.log('New ICE candidate:',event.candidate)
+            console.log('New ICE candidate:',event.candidate);
         }
     }
 
-    let offer=await peerConnection.createOffer()
-    await peerConnection.setLocalDescription(offer)
+    let offer=await peerConnection.createOffer();
+    await peerConnection.setLocalDescription(offer);
 
-    console.log('Offer:',offer)
+    console.log('Offer:',offer);
 }
